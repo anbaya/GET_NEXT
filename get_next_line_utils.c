@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/10 15:00:31 by anbaya            #+#    #+#             */
+/*   Updated: 2024/12/10 15:01:39 by anbaya           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)
@@ -5,12 +17,13 @@ size_t	ft_strlen(const char *s)
 	size_t	i;
 
 	if (!s)
-		return 0;
+		return (0);
 	i = 0;
 	while (s[i])
 		i++;
 	return (i);
 }
+
 char	*ft_substr(char const *s, size_t start, size_t len)
 {
 	size_t	i;
@@ -36,6 +49,7 @@ char	*ft_substr(char const *s, size_t start, size_t len)
 	sub[j] = '\0';
 	return (sub);
 }
+
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
@@ -53,6 +67,7 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (0);
 }
+
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
@@ -70,6 +85,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 	dest[i] = '\0';
 	return (src_len);
 }
+
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
 	size_t	i;
