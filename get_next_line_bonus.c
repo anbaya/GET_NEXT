@@ -6,7 +6,7 @@
 /*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:46 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 14:58:52 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/10 18:12:20 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ char	*last_line(char **sv)
 char	*get_next_line_bonus(int fd)
 {
 	static char	*sv[1024];
-	ssize_t		reader_return ;
+	ssize_t		reader_return;
 
 	if (!sv[fd])
 	{
@@ -94,7 +94,7 @@ char	*get_next_line_bonus(int fd)
 		if (ft_strchr(sv[fd], '\n'))
 			return (line_taker(&sv[fd]));
 		else if (!(ft_strchr(sv[fd], '\n')))
-			reader_return = reader(fd, &sv[fd], BUFFER_SIZE);
+			reader_return(= reader(fd, &sv[fd], BUFFER_SIZE));
 		if (reader_return <= 0)
 		{
 			if (*sv[fd])
