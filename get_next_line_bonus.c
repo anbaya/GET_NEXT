@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/10 14:55:46 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 18:12:20 by anbaya           ###   ########.fr       */
+/*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
+/*   Updated: 2024/12/10 18:18:20 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ char	*line_taker(char **sv)
 	i = 0;
 	while ((*sv)[i] != '\n' && (*sv)[i] != '\0')
 		i++;
+	i++;
 	tmp1 = ft_substr(*sv, 0, i);
 	i++;
 	tmp2 = ft_substr(*sv, i, (ft_strlen(*sv) - i));
@@ -49,7 +50,7 @@ ssize_t	reader(int fd, char **sv, ssize_t buffer_sz)
 		return (-1);
 	ret = read(fd, tmp, buffer_sz);
 	if (ret < 0)
-		return (ret);
+		return (free(tmp), ret);
 	tmp[ret] = '\0';
 	new_size = (ft_strlen(*sv) + ret + 1);
 	new_sv = malloc(sizeof(char) * new_size);
@@ -94,13 +95,16 @@ char	*get_next_line_bonus(int fd)
 		if (ft_strchr(sv[fd], '\n'))
 			return (line_taker(&sv[fd]));
 		else if (!(ft_strchr(sv[fd], '\n')))
-			reader_return(= reader(fd, &sv[fd], BUFFER_SIZE));
+			reader_return = reader(fd, &sv[fd], BUFFER_SIZE);
 		if (reader_return <= 0)
 		{
+			if (reader_return == -1)
+				return (free(sv[fd]), NULL);
 			if (*sv[fd])
 				return (last_line(&sv[fd]));
 			break ;
 		}
 	}
+	free(sv[fd]);
 	return (NULL);
 }
