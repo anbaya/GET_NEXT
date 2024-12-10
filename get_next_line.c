@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anbaya <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 14:57:59 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/10 15:24:30 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ ssize_t	reader(int fd, char **sv, ssize_t buffer_sz)
 		return (-1);
 	ret = read(fd, tmp, buffer_sz);
 	if (ret < 0)
-		return (ret);
+		return (free(tmp),ret);
 	tmp[ret] = '\0';
 	new_size = (ft_strlen(*sv) + ret + 1);
 	new_sv = malloc(sizeof(char) * new_size);
@@ -98,6 +98,8 @@ char	*get_next_line(int fd)
 			reader_return = reader(fd, &sv, BUFFER_SIZE);
 		if (reader_return <= 0)
 		{
+			if(reader_return == -1)
+				return(free(sv),NULL);
 			if (*sv)
 				return (last_line(&sv));
 			break ;
