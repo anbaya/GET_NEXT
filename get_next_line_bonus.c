@@ -6,7 +6,7 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 18:18:20 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/10 18:32:35 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ char	*line_taker(char **sv)
 	i = 0;
 	while ((*sv)[i] != '\n' && (*sv)[i] != '\0')
 		i++;
-	i++;
-	tmp1 = ft_substr(*sv, 0, i);
+	tmp1 = ft_substr(*sv, 0, i + 1);
 	i++;
 	tmp2 = ft_substr(*sv, i, (ft_strlen(*sv) - i));
 	free(*sv);
@@ -74,7 +73,7 @@ char	*last_line(char **sv)
 	last = malloc(ft_strlen(*sv) + 1);
 	if (!last)
 		return (NULL);
-	ft_strlcpy(last, *sv, ft_strlen(*sv));
+	ft_strlcpy(last, *sv, ft_strlen(*sv) + 1);
 	free(*sv);
 	*sv = NULL;
 	return (last);
