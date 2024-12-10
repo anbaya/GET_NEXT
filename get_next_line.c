@@ -6,7 +6,7 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 18:35:40 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/10 21:09:45 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ ssize_t	reader(int fd, char **sv, ssize_t buffer_sz)
 
 	tmp = malloc(sizeof(char) * (buffer_sz + 1));
 	if (!tmp)
-		return (-1);
+		return (free(tmp), -1);
 	ret = read(fd, tmp, buffer_sz);
 	if (ret < 0)
 		return (free(tmp), ret);
@@ -54,13 +54,13 @@ ssize_t	reader(int fd, char **sv, ssize_t buffer_sz)
 	new_size = (ft_strlen(*sv) + ret + 1);
 	new_sv = malloc(sizeof(char) * new_size);
 	if (!new_sv)
-		return (-1);
+		return (free(new_sv), -1);
 	ft_strlcpy(new_sv, *sv, ft_strlen(*sv) + 1);
 	ft_strlcat(new_sv, tmp, ft_strlen(new_sv) + ft_strlen(tmp) + 1);
 	free(*sv);
 	*sv = malloc(sizeof(char) * new_size);
 	if (!(*sv))
-		return (-1);
+		return (free(*sv), -1);
 	ft_strlcpy(*sv, new_sv, new_size + 1);
 	freedom(&new_sv, &tmp);
 	return (ret);
@@ -72,7 +72,7 @@ char	*last_line(char **sv)
 
 	last = malloc(ft_strlen(*sv) + 1);
 	if (!last)
-		return (NULL);
+		return (free(last), NULL);
 	ft_strlcpy(last, *sv, ft_strlen(*sv) + 1);
 	free(*sv);
 	*sv = NULL;

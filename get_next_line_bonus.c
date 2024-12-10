@@ -6,11 +6,11 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 18:32:35 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/10 21:15:01 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 void	freedom(char **new_sv, char **tmp)
 {
@@ -79,7 +79,7 @@ char	*last_line(char **sv)
 	return (last);
 }
 
-char	*get_next_line_bonus(int fd)
+char	*get_next_line(int fd)
 {
 	static char	*sv[1024];
 	ssize_t		reader_return;
