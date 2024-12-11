@@ -6,7 +6,7 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 21:15:01 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/11 16:22:05 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ char	*get_next_line(int fd)
 	static char	*sv[1024];
 	ssize_t		reader_return;
 
-	if (!sv[fd])
+	if (!sv[fd] && fd >= 0)
 	{
 		sv[fd] = malloc(1);
 		sv[fd][0] = '\0';
@@ -104,6 +104,5 @@ char	*get_next_line(int fd)
 			break ;
 		}
 	}
-	free(sv[fd]);
-	return (NULL);
+	return (free(sv[fd]), sv[fd] = NULL, NULL);
 }

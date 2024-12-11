@@ -6,7 +6,7 @@
 /*   By: anbaya <anbaya@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/10 14:55:01 by anbaya            #+#    #+#             */
-/*   Updated: 2024/12/10 21:09:45 by anbaya           ###   ########.fr       */
+/*   Updated: 2024/12/11 16:14:24 by anbaya           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,5 +105,5 @@ char	*get_next_line(int fd)
 		}
 	}
 	free(sv);
-	return (NULL);
+	return (sv = NULL, NULL);
 }
